@@ -1,6 +1,7 @@
 package org.example.hexlet;
 
 import io.javalin.Javalin;
+
 import java.util.Collections;
 import java.util.List;
 
@@ -19,21 +20,25 @@ public class HelloWorld {
         var app = Javalin.create(config -> {
             config.plugins.enableDevLogging();
         });
-        app.get("/", ctx -> {
+
+        app.get("/users/build", ctx -> {
             var header = "Users List";
             var page = new UsersPage(USERS, header);
-            ctx.render("layout/page.jte", Collections.singletonMap("page", page));
+            ctx.render("tem-plate.jte", Collections.singletonMap("page", page));
         });
+
         app.get("/courses", ctx -> {
             var header = "Courses List";
             var page = new CoursePage(COURSES, header);
             ctx.render("courses.jte", Collections.singletonMap("page", page));
         });
+
         app.get("/users", ctx -> {
             var header = "Users List";
             var page = new UsersPage(USERS, header);
             ctx.render("users.jte", Collections.singletonMap("page", page));
         });
+
         app.get("/users/{id}", ctx -> {
             var id = ctx.pathParamAsClass("id", Long.class).get();
             User user = USERS.stream()
