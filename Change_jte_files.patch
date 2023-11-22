@@ -1,0 +1,125 @@
+Subject: [PATCH] Change jte files
+---
+Index: src/main/jte/tem-plate.jte
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/jte/tem-plate.jte b/src/main/jte/tem-plate.jte
+--- a/src/main/jte/tem-plate.jte	(revision 221963070ccc22f3a9ad1721e0b2c83f3ee227ba)
++++ b/src/main/jte/tem-plate.jte	(date 1700663181870)
+@@ -2,7 +2,7 @@
+ 
+ @param UsersPage page
+ 
+-@template.layout.page(page = page, content = @`
++@template.layout.page(content = @`
+     <a href="/users/build">New User</a>
+     @for(var user : page.getUsers())
+         <div>
+Index: src/main/jte/courses.jte
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/jte/courses.jte b/src/main/jte/courses.jte
+--- a/src/main/jte/courses.jte	(revision 221963070ccc22f3a9ad1721e0b2c83f3ee227ba)
++++ b/src/main/jte/courses.jte	(date 1700663181881)
+@@ -2,16 +2,16 @@
+ 
+ @param CoursePage page
+ 
+-@template.layout.page(page = page, content = @`
+-<h2>${page.getHeader()}</h2>
+-@if(page.getCourses().isEmpty())
+-    <p>There are no courses at the moment</p>
+-@else
+-    @for(var course : page.getCourses())
+-        <div>
+-            <h2><a href="/courses/${course.getId()}">${course.getName()}</a></h2>
+-            <p>${course.getDescription()}</p>
+-        </div>
+-    @endfor
+-@endif
++@template.layout.page(content = @`
++    <h2>${page.getHeader()}</h2>
++    @if(page.getCourses().isEmpty())
++        <p>There are no courses at the moment</p>
++    @else
++        @for(var course : page.getCourses())
++            <div>
++                <h2><a href="/courses/${course.getId()}">${course.getName()}</a></h2>
++                <p>${course.getDescription()}</p>
++            </div>
++        @endfor
++    @endif
+ `)
+Index: src/main/jte/users.jte
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/jte/users.jte b/src/main/jte/users.jte
+--- a/src/main/jte/users.jte	(revision 221963070ccc22f3a9ad1721e0b2c83f3ee227ba)
++++ b/src/main/jte/users.jte	(date 1700663181876)
+@@ -2,15 +2,15 @@
+ 
+ @param UsersPage page
+ 
+-@template.layout.page(page = page, content = @`
+-<h2>${page.getHeader()}</h2>
+-@if(page.getUsers().isEmpty())
+-    <p>There are no users at the moment</p>
+-@else
+-    @for(var user : page.getUsers())
+-        <div>
+-            <p>${user.getName()}</p>
+-        </div>
+-    @endfor
+-@endif
++@template.layout.page(content = @`
++    <h2>${page.getHeader()}</h2>
++    @if(page.getUsers().isEmpty())
++        <p>There are no users at the moment</p>
++    @else
++        @for(var user : page.getUsers())
++            <div>
++                <p>${user.getName()}</p>
++            </div>
++        @endfor
++    @endif
+ `)
+Index: src/main/jte/user.jte
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/jte/user.jte b/src/main/jte/user.jte
+--- a/src/main/jte/user.jte	(revision 221963070ccc22f3a9ad1721e0b2c83f3ee227ba)
++++ b/src/main/jte/user.jte	(date 1700663181874)
+@@ -2,7 +2,7 @@
+ 
+ @param UserPage page
+ 
+-@template.layout.page(page = page, content = @`
++@template.layout.page(content = @`
+     <h1>${page.getHeader()}</h1>
+     <p>
+         ${page.getUser().getId()}
+Index: src/main/jte/layout/page.jte
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/jte/layout/page.jte b/src/main/jte/layout/page.jte
+--- a/src/main/jte/layout/page.jte	(revision 221963070ccc22f3a9ad1721e0b2c83f3ee227ba)
++++ b/src/main/jte/layout/page.jte	(date 1700663181878)
+@@ -1,8 +1,6 @@
+-@import org.example.hexlet.dto.courses.CoursePage
+ @import gg.jte.Content
+ 
+ @param Content content
+-@param CoursePage page
+ 
+ <!doctype html>
+ <html lang="en">
