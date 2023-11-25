@@ -2,12 +2,16 @@
 
 @param UsersPage page
 
-@template.layout.page(page = page, content = @`
-    <a href="/users/build">New User</a>
+@template.layout.page(content = @`
     @for(var user : page.getUsers())
         <div>
+            ${user.getId()}
             ${user.getName()}
         </div>
     @endfor
-`)
+`,
+footer = @`
+    <p>Thanks for visiting, come again soon!</p>
+`
+)
 

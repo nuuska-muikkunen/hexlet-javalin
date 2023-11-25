@@ -2,10 +2,12 @@
 
 @param UserPage page
 
-@template.layout.page(page = page, content = @`
-    <h1>${page.getHeader()}</h1>
-    <p>
-        ${page.getUser().getId()}
-        ${page.getUser().getName()}
-    </p>
-`)
+@template.layout.page(content = @`
+    <h1>Пользователь</h1>
+    <h2>${page.getUser().getId()}</h2>
+    <div>${page.getUser().getName()}</div>
+`,
+footer = @`
+    <p>Thanks for visiting, come again soon!</p>
+`
+)

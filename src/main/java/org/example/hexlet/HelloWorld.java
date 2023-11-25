@@ -12,6 +12,8 @@ import org.example.hexlet.dto.users.UsersPage;
 import org.example.hexlet.model.User;
 import org.example.hexlet.model.Course;
 
+import static java.lang.String.valueOf;
+
 public class HelloWorld {
     private static final List<User> USERS = Data.getUsers();
     private static final List<Course> COURSES = Data.getCourses();
@@ -19,6 +21,13 @@ public class HelloWorld {
 
         var app = Javalin.create(config -> {
             config.plugins.enableDevLogging();
+            config.staticFiles.add(staticFileConfig -> {
+                staticFileConfig.directory = "/css";
+            });
+        });
+
+        app.get("/", ctx -> {
+            ctx.render("main.jte");
         });
 
         app.get("/users/build", ctx -> {
@@ -28,13 +37,13 @@ public class HelloWorld {
         });
 
         app.get("/courses", ctx -> {
-            var header = "Courses List";
+            var header = "Courses";
             var page = new CoursePage(COURSES, header);
             ctx.render("courses.jte", Collections.singletonMap("page", page));
         });
 
         app.get("/users", ctx -> {
-            var header = "Users List";
+            var header = "Users";
             var page = new UsersPage(USERS, header);
             ctx.render("users.jte", Collections.singletonMap("page", page));
         });
@@ -48,7 +57,7 @@ public class HelloWorld {
             if (user == null) {
                 throw new NotFoundResponse("User not found");
             }
-            var header = "User # " + id;
+            var header = valueOf(id);
             var page = new UserPage(user, header);
             ctx.render("user.jte", Collections.singletonMap("page", page));
         });

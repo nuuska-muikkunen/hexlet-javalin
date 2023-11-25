@@ -2,16 +2,26 @@
 
 @param CoursePage page
 
-@template.layout.page(page = page, content = @`
-<h2>${page.getHeader()}</h2>
-@if(page.getCourses().isEmpty())
-    <p>There are no courses at the moment</p>
-@else
-    @for(var course : page.getCourses())
-        <div>
-            <h2><a href="/courses/${course.getId()}">${course.getName()}</a></h2>
-            <p>${course.getDescription()}</p>
-        </div>
-    @endfor
-@endif
-`)
+@template.layout.page(
+content = @`
+    <h1>Курсы</h1>
+    <table class="table table-striped">
+        @for(var course : page.getCourses())
+            <tr>
+                <td>
+                    ${course.getId()}
+                </td>
+                <td>
+                    <a href="/courses/${course.getId()}">${course.getName()}</a>
+                </td>
+                <td>
+                    <p>${course.getDescription()}</p>
+                </td>
+            </tr>
+        @endfor
+    </table>
+`,
+footer = @`
+    <p>Thanks for visiting, come again soon!</p>
+`
+)
