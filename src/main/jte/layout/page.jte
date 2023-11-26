@@ -22,13 +22,13 @@
                 <a class="nav-link" href="/">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/users">Users</a>
+                <a class="nav-link" href="/userslist">Users</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/courses">Courses</a>
             </li>
             <li class="nav-item">
-                <form action="/users/id" method="get">
+                <form action="/users" method="get">
                     <label>
                         <input type="search" required name="id" placeholder="User id"/>
                     </label>
