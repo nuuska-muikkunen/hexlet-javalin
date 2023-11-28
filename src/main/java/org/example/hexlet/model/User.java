@@ -12,10 +12,13 @@ public final class User {
     private long id;
     @ToString.Include
     private String name;
+    private String email;
+    private String password;
 
-    public User(long id, String name) {
-        this.id = id;
+    public User(String name, String email, String password) {
         this.name = name;
+        this.email = email;
+        this.password = password;
     }
 
     public User() {

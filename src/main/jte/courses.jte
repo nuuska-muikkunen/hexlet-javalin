@@ -9,10 +9,10 @@ content = @`
         @for(var course : page.getCourses())
             <tr>
                 <td>
-                    ${course.getId()}
+                    <a href="/courses/${course.getId()}">${course.getId()}</a>
                 </td>
                 <td>
-                    <a href="/courses/${course.getId()}">${course.getName()}</a>
+                    ${course.getName()}
                 </td>
                 <td>
                     <p>${course.getDescription()}</p>

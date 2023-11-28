@@ -31,6 +31,7 @@ public class Data {
             User user = new User();
             user.setId(Long.parseLong(ids.get(i)));
             user.setName(faker.name().name());
+            user.setEmail(faker.internet().emailAddress());
             users.add(user);
         }
         return users;
@@ -42,6 +43,7 @@ public class Data {
         User user = new User();
         user.setId(faker.number().positive());
         user.setName(faker.name().name());
+        user.setEmail(faker.internet().emailAddress());
         return user;
     }
 

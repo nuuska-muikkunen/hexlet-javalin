@@ -8,10 +8,13 @@ content = @`
         @for(var user : page.getUsers())
             <tr>
                 <td>
-                    ${user.getId()}
+                    <a href="/users/${user.getId()}">${user.getId()}</a>
                 </td>
                 <td>
-                    <a href="/users/${user.getId()}">${user.getName()}</a>
+                    ${user.getName()}
+                </td>
+                <td>
+                    ${user.getEmail()}
                 </td>
             </tr>
         @endfor

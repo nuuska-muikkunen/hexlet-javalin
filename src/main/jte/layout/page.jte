@@ -22,18 +22,25 @@
                 <a class="nav-link" href="/">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/userslist">Users</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/courses">Courses</a>
-            </li>
-            <li class="nav-item">
+                <a class="nav-link" href="/users">Users</a>
                 <form action="/users" method="get">
                     <label>
                         <input type="search" required name="id" placeholder="User id"/>
                     </label>
                     <input type="submit" value="Search"/>
                 </form>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/courses">Courses</a>
+                <form action="/courses" method="get">
+                    <label>
+                        <input type="search" required name="name" placeholder="Course name"/>
+                    </label>
+                    <input type="submit" value="Search"/>
+                </form>
+            </li>
+            <li class="nav-item">
+
             </li>
         </ul>
     </div>
