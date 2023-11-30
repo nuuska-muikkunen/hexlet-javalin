@@ -1,4 +1,5 @@
 @import gg.jte.Content
+@import org.example.hexlet.util.NamedRoutes
 
 @param Content content
 @param Content footer = null
@@ -22,25 +23,22 @@
                 <a class="nav-link" href="/">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/users">Users</a>
-                <form action="/users" method="get">
-                    <label>
+                <a class="nav-link" href="${NamedRoutes.usersPath()}">Users</a>
+                <form action="${NamedRoutes.usersPath()}" method="get">
+                    <label class="form-label">
                         <input type="search" required name="id" placeholder="User id"/>
                     </label>
                     <input type="submit" value="Search"/>
                 </form>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/courses">Courses</a>
-                <form action="/courses" method="get">
-                    <label>
+                <a class="nav-link" href="${NamedRoutes.coursesPath()}">Courses</a>
+                <form action="${NamedRoutes.coursesPath()}" method="get">
+                    <label class="form-label">
                         <input type="search" required name="name" placeholder="Course name"/>
                     </label>
                     <input type="submit" value="Search"/>
                 </form>
-            </li>
-            <li class="nav-item">
-
             </li>
         </ul>
     </div>

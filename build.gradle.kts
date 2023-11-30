@@ -29,8 +29,9 @@ dependencies {
     implementation("io.javalin:javalin:5.6.2")
     implementation("org.slf4j:slf4j-simple:2.0.7")
     implementation("gg.jte:jte:3.0.1")
-    testImplementation(platform("org.junit:junit-bom:5.9.1"))
+    testImplementation(platform("org.junit:junit-bom:5.9.2"))
     testImplementation("org.junit.jupiter:junit-jupiter")
+    implementation("org.apache.commons:commons-lang3:3.13.0")
 }
 
 tasks.test {
