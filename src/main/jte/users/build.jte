@@ -1,31 +1,31 @@
-@import org.example.hexlet.dto.users.BuildUserPage
 @import org.example.hexlet.util.NamedRoutes
+@import org.example.hexlet.dto.users.UserPage
 
-@param BuildUserPage page
+@param UserPage page
 
 @template.layout.page(
 content = @`
-    @if(page.getErrors() != null)
-        <ul>
-            @for(var validator : page.getErrors().values())
-                @for(var error : validator)
-                    <li>${error.getMessage()}</li>
-                @endfor
-            @endfor
-        </ul>
-    @endif
+<%--    @if(page.getErrors() != null)--%>
+<%--        <ul>--%>
+<%--            @for(var validator : page.getErrors().values())--%>
+<%--                @for(var error : validator)--%>
+<%--                    <li>${error.getMessage()}</li>--%>
+<%--                @endfor--%>
+<%--            @endfor--%>
+<%--        </ul>--%>
+<%--    @endif--%>
 
     <form action="${NamedRoutes.usersPath()}" method="post">
         <div class="mb-3">
             <label class="form-label">
                 Name
-                <input type="text" class="form-control" name="name" value="${page.getName()}" />
+                <input type="text" class="form-control" name="name" />
             </label>
         </div>
         <div class="mb-3">
             <label class="form-label">
                 Email
-                <input type="email" required class="form-control" name="email" value="${page.getEmail()}" />
+                <input type="email" required class="form-control" name="email" />
             </label>
         </div>
         <div class="mb-3">
