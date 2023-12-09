@@ -14,10 +14,9 @@ import lombok.NoArgsConstructor;
 public class BuildCoursePage {
     private String name;
     private String description;
+    private Map<String, List<ValidationError<Object>>> errors;
 
     public BuildCoursePage(Map<String, List<ValidationError<Object>>> errors) {
         this.errors = errors;
     }
-
-    private Map<String, List<ValidationError<Object>>> errors;
 }

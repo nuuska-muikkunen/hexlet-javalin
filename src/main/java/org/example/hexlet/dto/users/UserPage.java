@@ -9,5 +9,4 @@ import lombok.Getter;
 @Getter
 public class UserPage {
     private User user;
-    private String header;
 }
