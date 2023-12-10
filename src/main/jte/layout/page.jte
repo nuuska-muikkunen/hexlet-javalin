@@ -1,8 +1,10 @@
 @import gg.jte.Content
 @import org.example.hexlet.util.NamedRoutes
+@import org.example.hexlet.dto.BasePage
 
 @param Content content
 @param Content footer = null
+@param BasePage page = null
 
 <!doctype html>
 <html lang="en">
@@ -43,8 +45,18 @@
         </ul>
     </div>
 </nav>
-
 <div class="mx-auto p-4 py-md-5">
+    @if(page != null && page.getFlash() != null)
+        @if(!page.getFlash().contains("8"))
+            <div class="alert alert-success" role="alert">
+                <p>${page.getFlash()}</p>
+            </div>
+        @else
+            <div class="alert alert-warning" role="alert">
+                <p>${page.getFlash()}</p>
+            </div>
+        @endif
+    @endif
     ${content}
 </div>
 

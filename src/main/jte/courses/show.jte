@@ -3,7 +3,8 @@
 
 @param CoursesPage page
 
-@template.layout.page(content = @`
+@template.layout.page(
+content = @`
     <h1>Курс</h1>
     <table class="table table-striped">
         @for(var course : page.getCourses())

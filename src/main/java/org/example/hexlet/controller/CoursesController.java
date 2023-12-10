@@ -1,6 +1,6 @@
 package org.example.hexlet.controller;
 
-import java.util.Collections;
+import  java.util.Collections;
 
 import io.javalin.http.Context;
 import io.javalin.http.NotFoundResponse;
@@ -14,6 +14,7 @@ public class CoursesController {
     public static void index(Context ctx) {
         var courses = CourseRepository.getEntities();
         var page = new CoursesPage(courses);
+        page.setFlash(ctx.consumeSessionAttribute("flash")); // получаем значение флэш и выводим через шаблон
         ctx.render("courses/index.jte", Collections.singletonMap("page", page));
     }
 
@@ -36,6 +37,9 @@ public class CoursesController {
         var description = ctx.formParam("description");
         var course = new Course(name, description);
         CourseRepository.save(course);
+        // Добавляем сообщение в сессию
+        // Ключ может иметь любое название, здесь мы выбрали flash
+        ctx.sessionAttribute("flash", "Course has been created!");
         ctx.redirect(NamedRoutes.coursesPath());
     }
 

@@ -4,6 +4,7 @@
 @param CoursesPage page
 
 @template.layout.page(
+page = page,
 content = @`
     <h1>Курсы</h1>
     <table class="table table-striped">

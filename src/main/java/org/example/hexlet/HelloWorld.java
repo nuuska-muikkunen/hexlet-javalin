@@ -47,22 +47,19 @@ public class HelloWorld {
 //            ctx.render("main.jte");
 //        });
 
-        app.get("/courses", CoursesController::index);
-        app.get("/courses/build", CoursesController::build);
-        app.get("/courses/{name}", CoursesController::show);
-        app.post("/courses", CoursesController::create);
+        app.get(NamedRoutes.coursesPath(), CoursesController::index);
+        app.get(NamedRoutes.buildCoursePath(), CoursesController::build);
+        app.get(NamedRoutes.coursePath("{name}"), CoursesController::show);
+        app.post(NamedRoutes.coursesPath(), CoursesController::create);
 
-        app.get("/users", UsersController::index);
-        app.get("/users/build", UsersController::build);
-        app.get("/users/{id}", UsersController::show);
-        app.post("/users", UsersController::create);
+        app.get(NamedRoutes.usersPath(), UsersController::index);
+        app.get(NamedRoutes.buildUserPath(), UsersController::build);
+        app.get(NamedRoutes.userPath("{id}"), UsersController::show);
+        app.post(NamedRoutes.usersPath(), UsersController::create);
 
-// Отображение формы логина
         app.get(NamedRoutes.buildSessionPath(), SessionsController::build);
-// Процесс логина
-        app.post("/sessions", SessionsController::create);
-// Процесс выхода из аккаунта
-        app.delete("/sessions", SessionsController::destroy);
+        app.post(NamedRoutes.sessionsPath(), SessionsController::create);
+        app.delete(NamedRoutes.sessionsPath(), SessionsController::destroy);
 
         app.start(7070);
     }

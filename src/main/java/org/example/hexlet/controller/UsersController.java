@@ -15,6 +15,7 @@ public class UsersController {
     public static void index(Context ctx) {
         var users = UserRepository.getEntities();
         var page = new UsersPage(users);
+        page.setFlash(ctx.consumeSessionAttribute("flash")); // получаем значение флэш и выводим через шаблон
         ctx.render("users/index.jte", Collections.singletonMap("page", page));
     }
 
@@ -34,9 +35,13 @@ public class UsersController {
         var name = ctx.formParam("name");
         var email = ctx.formParam("email");
         var password = ctx.formParam("password");
-
-        var user = new User(name, email, password);
-        UserRepository.save(user);
+        if (password.length() >= 8) {
+            var user = new User(name, email, password);
+            UserRepository.save(user);
+            ctx.sessionAttribute("flash", "User has been created!");
+        } else {
+            ctx.sessionAttribute("flash", "Password is less than 8 letters. No user created!");
+        }
         ctx.redirect(NamedRoutes.usersPath());
     }
 
