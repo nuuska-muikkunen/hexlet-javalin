@@ -1,9 +1,12 @@
 package org.example.hexlet;
 
 import net.datafaker.Faker;
+import net.datafaker.providers.base.App;
 import org.example.hexlet.model.Course;
 import org.example.hexlet.model.User;
 
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Random;
@@ -11,10 +14,20 @@ import java.util.Locale;
 import java.util.stream.IntStream;
 import java.util.stream.Collectors;
 import java.util.Collections;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
 
 public class Data {
     private static final int ITEMS_COUNT = 30;
     private static int idCounter = ITEMS_COUNT;
+
+    public static String readResourceFile(String fileName) throws IOException {
+        var inputStream = App.class.getClassLoader().getResourceAsStream(fileName);
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8))) {
+            return reader.lines().collect(Collectors.joining("\n"));
+        }
+    }
 
     public static List<User> getUsers() {
         Random random = new Random(123);

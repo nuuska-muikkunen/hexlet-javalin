@@ -2,13 +2,13 @@ package org.example.hexlet;
 
 import io.javalin.Javalin;
 
-import java.io.File;
+//import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
+//import java.nio.file.Files;
 import java.sql.SQLException;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
+//import java.util.stream.Collectors;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
@@ -17,12 +17,15 @@ import org.example.hexlet.controller.CoursesController;
 import org.example.hexlet.controller.SessionsController;
 import org.example.hexlet.controller.UsersController;
 import org.example.hexlet.dto.MainPage;
+//import org.example.hexlet.Data;
 import org.example.hexlet.repository.BaseRepository;
 import org.example.hexlet.repository.CourseRepository;
 import org.example.hexlet.repository.UserRepository;
 import org.example.hexlet.model.User;
 import org.example.hexlet.model.Course;
 import org.example.hexlet.util.NamedRoutes;
+
+import static org.example.hexlet.Data.readResourceFile;
 
 public class HelloWorld {
     private static final List<User> USERS = Data.getUsers();
@@ -35,11 +38,12 @@ public class HelloWorld {
         var dataSource = new HikariDataSource(hikariConfig);
 
         // Получаем путь до файла в src/main/resources
-        var url = HelloWorld.class.getClassLoader().getResource("schema.sql");
-        var file = new File(url.getFile());
-        var sql = Files.lines(file.toPath())
-                .collect(Collectors.joining("\n"));
 
+//        var url = HelloWorld.class.getClassLoader().getResource("schema.sql");
+//        var file = new File(url.getFile());
+//        var sql = Files.lines(file.toPath())
+//                .collect(Collectors.joining("\n"));
+        var sql = readResourceFile("schema.sql");
         // Получаем соединение, создаем стейтмент и выполняем запрос
         // Analog of DriverManager.getConnection("jdbc:h2:mem:hexlet_project");
         try (var connection = dataSource.getConnection();
