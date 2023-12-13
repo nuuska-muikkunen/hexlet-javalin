@@ -35,7 +35,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="${NamedRoutes.coursesPath()}">Courses</a>
-                <form action="${NamedRoutes.coursesPath()}" method="get">
+            <form action="${NamedRoutes.coursePath("${name}")}" method="get">
                     <label class="form-label">
                         <input type="search" required name="name" placeholder="Course name"/>
                     </label>
