@@ -75,7 +75,7 @@ public class HelloWorld {
             var page = new MainPage(ctx.sessionAttribute("currentUser"));
             ctx.render("login.jte", Collections.singletonMap("page", page));
         });
-
+// this line is just for GitHub integration test and can be removed
 //        app.get("/", ctx -> {
 //            ctx.render("main.jte");
 //        });
